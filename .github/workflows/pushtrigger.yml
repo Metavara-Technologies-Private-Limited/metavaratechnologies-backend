@@ -53,7 +53,7 @@ jobs:
             docker run -d \
               --restart always \
               --name website-backend \
-              -p 8005:8000 \
+              -p 8003:8000 \
               --pull always \
               -e SECRET_KEY="${{ secrets.SECRET_KEY }}" \
               -e DEBUG="False" \
