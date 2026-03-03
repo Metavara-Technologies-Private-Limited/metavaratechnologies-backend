@@ -8,9 +8,13 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     build-essential \
     gcc \
+    libglib2.0-0 \
     libgl1 \
-    poppler-utils \
+    libsm6 \
+    libxext6 \
+    libxrender-dev \
     tesseract-ocr \
+    poppler-utils \
     && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .
@@ -24,4 +28,4 @@ RUN python manage.py collectstatic --noinput || true
 
 EXPOSE 8000
 
-CMD ["gunicorn", "metavara.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["gunicorn", "metavara.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "3", "--timeout", "180"]
