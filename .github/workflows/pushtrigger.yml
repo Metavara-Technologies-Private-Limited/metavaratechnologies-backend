@@ -57,6 +57,7 @@ jobs:
               --pull always \
               -e SECRET_KEY="${{ secrets.SECRET_KEY }}" \
               -e DEBUG="False" \
+              -e SECURE_SSL_REDIRECT="${{ secrets.SECURE_SSL_REDIRECT }}"
               -e ALLOWED_HOSTS="${{ secrets.ALLOWED_HOSTS }}" \
               -e CORS_ALLOWED_ORIGINS="${{ secrets.CORS_ALLOWED_ORIGINS }}" \
               -e CSRF_TRUSTED_ORIGINS="${{ secrets.CSRF_TRUSTED_ORIGINS }}" \
