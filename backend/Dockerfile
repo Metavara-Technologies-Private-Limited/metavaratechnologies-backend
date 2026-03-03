@@ -8,6 +8,8 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y \
     build-essential \
     gcc \
+    sqlite3 \
+    libsqlite3-dev \
     libglib2.0-0 \
     libgl1 \
     libsm6 \
@@ -24,7 +26,7 @@ RUN pip install --upgrade pip \
 
 COPY . .
 
-RUN python manage.py collectstatic --noinput || true
+RUN python manage.py collectstatic --noinput --clear || true
 
 EXPOSE 8000
 
